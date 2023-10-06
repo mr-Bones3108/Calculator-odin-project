@@ -1,3 +1,9 @@
-/* body{
-    background-color: rgb(157, 110, 110);
-} */
+.myBtn{
+    width: 50px;
+    height: 40px;
+}
+.disp{
+    width: 400px;
+    height: 30px;
+    margin-bottom: 20px;
+}
