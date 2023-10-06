@@ -35,11 +35,11 @@ function deleteFromStr() {
 function Calculator(){
 
     this.calculate=function(str){
-        let split = str.split(/(\d+|\+)/).filter(Boolean);
+        let split = str.split(/(\d+\.\d+|\+|\*)/).filter(Boolean);
         a=+split[0]
         op=split[1]
         b=+split[2]
-        // console.log(split)
+        console.log(split)
 
 
         if(!this.method[op] || isNaN(a) || isNaN(b)){
@@ -49,16 +49,21 @@ function Calculator(){
     }
 
     this.method={
-        "+":(a,b)=>a+b,
-        "-":(a,b)=>a-b,
-        "*":(a,b)=>a*b,
-        "/":(a,b)=>a/b
+        "+":(a,b)=>roundToDecimalPlaces(a+b,2),
+        "-":(a,b)=>roundToDecimalPlaces(a-b,2),
+        "*":(a,b)=>roundToDecimalPlaces(a*b,2),
+        "/":(a,b)=>roundToDecimalPlaces(a/b,2)
     }
 
     this.addMethod = function(name,func){
         this.method[name]=func
     }
 }
+
+function roundToDecimalPlaces(number, decimalPlaces) {
+    const multiplier = Math.pow(10, decimalPlaces);
+    return Math.ceil(number * multiplier) / multiplier;
+  }
 
 
 
