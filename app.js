@@ -30,7 +30,7 @@ buttons.forEach((button)=>{
 function deleteFromStr() {
     if (display.value.length > 0) {
         display.value = display.value.slice(0, -1); // Remove the last character
-        console.log(display.value);
+        // console.log(display.value);
     }
 }
 
