@@ -35,7 +35,7 @@ function deleteFromStr() {
 function Calculator(){
 
     this.calculate=function(str){
-        let split = str.split(/(\d+\.\d+|\+|\*)/).filter(Boolean);
+        let split = str.split(/(\d+\.\d+|\+|\*|%|\^|\[|\])/).filter(Boolean);
         a=+split[0]
         op=split[1]
         b=+split[2]
@@ -52,11 +52,8 @@ function Calculator(){
         "+":(a,b)=>roundToDecimalPlaces(a+b,2),
         "-":(a,b)=>roundToDecimalPlaces(a-b,2),
         "*":(a,b)=>roundToDecimalPlaces(a*b,2),
-        "/":(a,b)=>roundToDecimalPlaces(a/b,2)
-    }
-
-    this.addMethod = function(name,func){
-        this.method[name]=func
+        "/":(a,b)=>roundToDecimalPlaces(a/b,2),
+        "%":(a,b)=>roundToDecimalPlaces((a * b) / 100 ,2)
     }
 }
 
