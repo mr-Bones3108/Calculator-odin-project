@@ -1,9 +1,11 @@
 .myBtn{
     width: 50px;
     height: 40px;
+    font-size: 20px;
 }
 .disp{
     width: 400px;
     height: 30px;
     margin-bottom: 20px;
+    font-size: 20px;
 }

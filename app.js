@@ -11,10 +11,12 @@ buttons.forEach((button)=>{
             return 
         }
         if(btnValue === 'del'){
-            if (btnValue === 'del') {
+            if (isNaN(display.value)) {
+                display.value = '';
+            } else {
                 deleteFromStr();
-                return; // Make sure to return after calling the function
             }
+            return; // Make sure to return after handling the condition
         }
         if(btnValue === 'ac'){
             display.value = ''; 
@@ -32,29 +34,50 @@ function deleteFromStr() {
     }
 }
 
-function Calculator(){
+function Calculator() {
+    this.calculate = function (str) {
+        // Split the input string using regular expressions
+        let split = str.split(/(\+|\-|\*|\/|\%)/).filter(Boolean);
 
-    this.calculate=function(str){
-        let split = str.split(/(\d+\.\d+|\+|\*|%|\^|\[|\])/).filter(Boolean);
-        a=+split[0]
-        op=split[1]
-        b=+split[2]
-        console.log(split)
+        // Initialize the result to the first number in the split array
+        let result = parseFloat(split[0]);
 
+        for (let i = 1; i < split.length; i += 2) {
+            // Get the operator and the next number
+            let operator = split[i];
+            let nextNumber = parseFloat(split[i + 1]);
 
-        if(!this.method[op] || isNaN(a) || isNaN(b)){
-            return NaN
+            if (isNaN(nextNumber)) {
+                return NaN; // Handle invalid input
+            }
+
+            // Perform the operation based on the operator
+            switch (operator) {
+                case '+':
+                    result += nextNumber;
+                    break;
+                case '-':
+                    result -= nextNumber;
+                    break;
+                case '*':
+                    result *= nextNumber;
+                    break;
+                case '/':
+                    if (nextNumber === 0) {
+                        return NaN; // Handle division by zero
+                    }
+                    result /= nextNumber;
+                    break;
+                case '%':
+                    result %= nextNumber;
+                    break;
+                default:
+                    return NaN; // Handle invalid operator
+            }
         }
-        return this.method[op](a,b);
-    }
 
-    this.method={
-        "+":(a,b)=>roundToDecimalPlaces(a+b,2),
-        "-":(a,b)=>roundToDecimalPlaces(a-b,2),
-        "*":(a,b)=>roundToDecimalPlaces(a*b,2),
-        "/":(a,b)=>roundToDecimalPlaces(a/b,2),
-        "%":(a,b)=>roundToDecimalPlaces((a * b) / 100 ,2)
-    }
+        return roundToDecimalPlaces(result, 2);
+    };
 }
 
 function roundToDecimalPlaces(number, decimalPlaces) {
