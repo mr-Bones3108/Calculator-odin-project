@@ -5,6 +5,7 @@ const display = document.getElementById("display")
 buttons.forEach((button)=>{
     button.addEventListener("click",()=>{
         const btnValue = button.value;
+        
         if(btnValue === '='){
             const calc = new  Calculator;
             display.value = calc.calculate(display.value)
@@ -64,6 +65,7 @@ function Calculator() {
                     break;
                 case '/':
                     if (nextNumber === 0) {
+                        alert('Error: Division by zero is not allowed')
                         return NaN; // Handle division by zero
                     }
                     result /= nextNumber;
