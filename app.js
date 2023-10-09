@@ -48,7 +48,7 @@ function Calculator() {
             let nextNumber = parseFloat(split[i + 1]);
 
             if (isNaN(nextNumber)) {
-                return NaN; // Handle invalid input
+                return ''; // Handle invalid input
             }
 
             // Perform the operation based on the operator

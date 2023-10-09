@@ -1,11 +1,77 @@
-.myBtn{
-    width: 50px;
-    height: 40px;
-    font-size: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
 }
-.disp{
-    width: 400px;
-    height: 30px;
-    margin-bottom: 20px;
+h2 {
+    text-align: center; /* Center the text */
+    font-size: 36px; /* Increase font size */
+    color: #4CAF50; /* Green color for the heading */
+    margin-top: 30px; /* Add more margin for spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+    padding: 10px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+}
+
+
+/* Style the container */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #79b6db4a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* Style the display input */
+.disp {
+    width: 100%;
+    padding: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: right;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Style the button container */
+.btn {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+/* Style the calculator buttons */
+.myBtn {
+    width: 100%;
+    padding: 15px;
     font-size: 20px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style specific buttons differently */
+.myBtn[value="="] {
+    background-color: #ff9900;
+    color: #ffffff;
+}
+.myBtn[value="+"],.myBtn[value="-"],.myBtn[value="*"],.myBtn[value="/"]{
+    background-color: #4caf4fcb;
+    color: #ffff;
+}
+
+.myBtn[value="del"], .myBtn[value="ac"] {
+    background-color: #ff3333;
+    color: #ffffff;
+}
+
+/* Add hover effect */
+.myBtn:hover {
+    background-color: #e0e0e0;
 }
