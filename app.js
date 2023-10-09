@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll(".myBtn")
 const display = document.getElementById("display")
 
+let decimalAdded = false;
 
 buttons.forEach((button)=>{
     button.addEventListener("click",()=>{
@@ -21,9 +22,23 @@ buttons.forEach((button)=>{
         }
         if(btnValue === 'ac'){
             display.value = ''; 
+            decimalAdded = false;
             return
         }
-        display.value +=btnValue
+        if(btnValue === '.'){
+            if (!decimalAdded) {
+                display.value += btnValue;
+                decimalAdded = true;
+            }
+        }
+        else if (/[+\-*/%]/.test(btnValue)) {
+            decimalAdded = false;
+            display.value += btnValue;
+        }
+        else{
+            display.value +=btnValue
+        }
+        
     })
 
 })
